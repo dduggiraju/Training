@@ -10,7 +10,7 @@ angular.module('stockManApp')
                 if (!ngModelCtrl) { return; } // do nothing if no model
                 // specify how UI is to be updated 
                 ngModelCtrl.$render = function () {
-                    $element.html($sce.getTrustedHTML(ngModelCtrl.$viewValue || ''));
+                    $element.html($sce.getTrustedHtml(ngModelCtrl.$viewValue || ''));
                 };
                 
                 //Read HTML value then write data to the model or reset the view 
@@ -25,12 +25,15 @@ angular.module('stockManApp')
                 
                 // Add custom parser based input type 
                 //Applied to $modelValue
-                
                 if ($attrs.type === 'number') {
-                   ngModelCtrl.$parse.push(function (value) {
+                   ngModelCtrl.$parsers.push(function (value) {
                       return parseFloat(value); 
                    });
                 }
+                
+                $element.on('blur  keyup change', function () {
+                    $scope.$apply(read);
+                });
             }
         };
     });
