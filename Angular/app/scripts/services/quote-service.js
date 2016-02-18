@@ -14,7 +14,6 @@ angular.module('stockManApp')
         var BASE = 'http://query.yahooapis.com/v1/public/yql';
         //[1] Handlesupdating stock modelwith appropriate data from quote 
         var update = function (quotes) {
-            console.log(quotes);
             if (quotes.length === stocks.length) {
                 _.each(quotes, function (quote, idx) {
                     var stock = stocks[idx];

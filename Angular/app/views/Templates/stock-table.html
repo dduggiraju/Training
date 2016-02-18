@@ -41,7 +41,7 @@
                 <span ng-hide="showPercent">{{stock.change}}</span>
                 <span ng-show="showPercent">{{stock.percentChange}}</span>
             </td>
-            <td>{{stock.marketValue | currency}}</td>
+            <td stk-sign-fade="{{wlist.marketValue}}">{{stock.marketValue | currency}}</td>
             <td stk-sign-color="{{wlist.dayChange}}">
                 {{wlist.dayChange | currency}}
             </td>
