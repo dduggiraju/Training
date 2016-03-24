@@ -1,10 +1,15 @@
- <div class="col-md-9">
-    please enter your login details 
-    <br/>
-    login: <input type="text" ng-model="user.name"/>
-    <br/>
-    password: <input type="password" ng-model="user.password"/>
-    <br/>
-    <input type="button" value="login" ng-click="user.login(user.name,user.password)"/>
+ <div ng-show="!user.loggedIn">
+ <form class="navbar-form navbar-right" role="login">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="user name" ng-model="user.name">
+      <input type="password" class="form-control" placeholder="password" ng-model="user.password">
+  </div>
+  <input type="button" class="btn btn-default" ng-click="user.login(user.name, user.password)" value="login"/>
+</form>
 </div>
-    
+<div ng-show="user.loggedIn">
+    <div class="navbar-right">
+    <div class="navbar-text">Welcome,  <a href="#" class="navbar-link">{{user.name}} </div>
+    <button type="button" class="btn btn-default navbar-btn" ng-click="user.logout()">log out</button> 
+    </div>
+</div>

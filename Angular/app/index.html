@@ -19,14 +19,6 @@
 <!--[1] loading of main controller -->
 
 <body ng-app="stockManApp" ng-controller="MainCtrl">
-  <!--<div ng-show="user.loggedIn"> 
-      <h1> {{user.name}}  </h1>
-      <input type="button" ng-click="user.logout()" value="logout" />
-  </div>
-  <div ng-show="!user.loggedIn"> 
-     <stk-login></stk-login>
-  </div>
-  <div ng-show="user.loggedIn">-->
     <nav class="navbar navbar-inverse" role="navigation" ng-cloak>
         <div class="container-fluid">
             <div class="navbar-header">
@@ -37,10 +29,10 @@
                 </button>
                 <a class="navbar-brand" href="/">StockMan</a>
             </div>
-            <div ng-show="user.loggedIn">
+            
             <!-- Collect nav links and other content for toggleing -->
             <div class="collapse navbar-collapse" id="main-nav">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav ">
                     <!-- [2] Add active class to nessesary items -->
                     <li ng-class="{active: activeView === 'dashboard'}">
                         <a href="/">Dashboard</a>
@@ -56,20 +48,17 @@
                         </ul>
                     </li>
                 </ul>
+                 <stk-login> </stk-login>
             </div>
             <!-- ./navbar-collapse -->
-        </div>
+        
         </div>
         <!--./container-fluid -->
     </nav>
     <!–– Main container ––>
     <div class="container-fluid" id="main">
-       <div ng-show="user.loggedIn">
          <div ng-view=""></div>
-       </div>
-        <div ng-show="!user.loggedIn">
-         <stk-login> </stk-login>
-        </div>
+
         <div class="footer">
             <p>Built with <span class="glyphicon glyphicon-heart"></span></p>
         </div>

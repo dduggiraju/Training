@@ -10,12 +10,16 @@
 angular.module('stockManApp')
     .service('LoginService', function ($timeout) {
         var user = {
-            loggedIn: false
+            loggedIn: localStorage.getItem('username') ? true: false ,
+            name: localStorage.getItem('username')
         };
         // user.loadFromServer = function () {
         //     $timeout(function () {
-        //         user.loggedIn = true;
-        //         user.name = 'Username';
+        //        var uname = localStorage.getItem('username'); 
+        //        if(uname)
+        //        {
+        //            user.name = uname;
+        //        }
         //     }, 500);
         // };
         user.login = function (username, password) {
@@ -23,11 +27,16 @@ angular.module('stockManApp')
                 // if(password === '')
                 user.loggedIn = true;
                 user.name = username;
+               
+                localStorage.setItem('username', username);
             }, 500)
         };
         user.logout = function () {
              user.loggedIn = false;
              user.name = undefined;
+              user.password = undefined;
+             localStorage.removeItem('username');
         };
+
         return user;
     });
